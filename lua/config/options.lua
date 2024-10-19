@@ -1,5 +1,5 @@
 --编码
-vim.opt.clipboard = 'unnamedplus' -- use system clipboard
+vim.opt.clipboard = "unnamedplus" -- use system clipboard
 
 --缩进
 -- Tab
@@ -26,10 +26,12 @@ vim.o.incsearch = true
 
 -- 鼠标支持
 vim.o.mouse = "a"
+-- 剪切板
+vim.opt.clipboard = 'unnamedplus' -- use system clipboard
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 -- 样式
 vim.opt.termguicolors = true
-
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

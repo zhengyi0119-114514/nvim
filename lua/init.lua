@@ -22,7 +22,6 @@ require("plugins.LanguageServeProtocol.lspkind-nvim")
 require("plugins.LanguageServeProtocol.lspsaga")
 
 require("plugins.Formatter-fotmatter")
-
 require("plugins.PackageInstaller.Mason")
 require("plugins.PackageInstaller.mason-lspconfig")
 
@@ -34,6 +33,8 @@ require("plugins.Explorer-nvim-config-local")
 require("plugins.Edit-Autopair")
 require("plugins.Edit-Todo-comment")
 
-vim.cmd.colorscheme("catppuccin-latte")
-vim.cmd.colorscheme("catppuccin-latte")
+require("plugins.LanguageServeProtocol.LSPServers.lua_ls")
+require("plugins.LanguageServeProtocol.LSPServers.clangd")
 
+vim.cmd.colorscheme("catppuccin-latte")
+vim.cmd.colorscheme("catppuccin-latte")

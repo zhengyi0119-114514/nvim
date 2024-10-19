@@ -167,6 +167,13 @@ require("lazy").setup({
 				require("neogit").setup()
 			end,
 		},
+		{
+			"sontungexpt/better-diagnostic-virtual-text",
+			event ="LspAttach",
+			config = function(_)
+				require("better-diagnostic-virtual-text").setup()
+			end,
+		},
 	},
 	-- automatically check for plugin updates
 	checker = { enabled = false },
