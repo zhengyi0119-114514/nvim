@@ -43,6 +43,9 @@ require("lazy").setup({
 		-- tab and buffer
 		{
 			"akinsho/bufferline.nvim",
+            keys = {
+                "<leader>et","<cmd>NvimTreeToggle<cr>",desc ="Toggle file explorer",
+            },
 			version = "*",
 			dependencies = "nvim-tree/nvim-web-devicons",
 		},
@@ -61,9 +64,43 @@ require("lazy").setup({
 			},
 		},
 		-- TreeSetter
-		"nvim-treesitter/nvim-treesitter",
-		"nvim-treesitter/nvim-treesitter-context",
-		"HiPhish/rainbow-delimiters.nvim",
+		{
+			lazy = true,
+			"nvim-treesitter/nvim-treesitter",
+			config = function()
+				require("plugins.TreeSetter.nvim-treesetter")
+			end,
+		},
+		{
+			"nvim-treesitter/nvim-treesitter-context",
+			lazy = true,
+			config = function()
+				require("plugins.TreeSetter.nvim-treesetter-context")
+			end,
+			dependencies = {
+				"nvim-treesitter/nvim-treesitter",
+			},
+		},
+		{
+			"HiPhish/rainbow-delimiters.nvim",
+			lazy = true,
+			config = function()
+				require("plugins.TreeSetter.rainbow-delimiters")
+			end,
+			dependencies = {
+				"nvim-treesitter/nvim-treesitter",
+			},
+		},
+		{
+			"JoosepAlviste/nvim-ts-context-commentstring",
+			lazy = true,
+			config = function()
+				require("plugins.TreeSetter.nvim-treesetter-context")
+			end,
+			dependencies = {
+				"nvim-treesitter/nvim-treesitter",
+			},
+		},
 		-- Explorer
 		"nvim-tree/nvim-tree.lua",
 		"klen/nvim-config-local",
@@ -101,26 +138,60 @@ require("lazy").setup({
 		-- LanguageServerProtocol
 		"neovim/nvim-lspconfig",
 
-		"rafamadriz/friendly-snippets",
-		"L3MON4D3/LuaSnip",
-		"saadparwaiz1/cmp_luasnip",
-
-		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
-		"hrsh7th/cmp-cmdline",
-		"hrsh7th/nvim-cmp",
-		"onsails/lspkind.nvim",
+		{
+			"L3MON4D3/LuaSnip",
+			lazy = true,
+			config = function()
+				require("plugins.LanguageServeProtocol.Snips.Luasnip")
+			end,
+		},
+		{
+			"rafamadriz/friendly-snippets",
+			lazy = true,
+			event = "InsertEnter",
+			dependencies = {
+				"L3MON4D3/LuaSnip",
+			},
+		},
+		{
+			"hrsh7th/nvim-cmp",
+			lazy = true,
+			event = "InsertEnter",
+			config = function()
+				require("plugins.LanguageServeProtocol.CMP")
+			end,
+			dependencies = {
+				"hrsh7th/cmp-nvim-lsp",
+				"hrsh7th/cmp-buffer",
+				"hrsh7th/cmp-path",
+				"hrsh7th/cmp-cmdline",
+				"L3MON4D3/LuaSnip",
+				"saadparwaiz1/cmp_luasnip",
+			},
+		},
+		{
+			"onsails/lspkind.nvim",
+			lazy = true,
+			event = "InsertEnter",
+            config = function ()
+                require("plugins.LanguageServeProtocol.lspkind-nvim")
+            end,
+			dependencies = {
+				"hrsh7th/nvim-cmp",
+			},
+		},
 		"smjonas/inc-rename.nvim",
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		{
 			"nvimdev/lspsaga.nvim",
+            config = function ()
+                require("plugins.LanguageServeProtocol.lspsaga")
+            end,
 			dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
 		},
 
 		--Debug
-		"mfussenegger/nvim-dap",
 		{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
 		"theHamsta/nvim-dap-virtual-text",
 
@@ -131,14 +202,13 @@ require("lazy").setup({
 		"lewis6991/satellite.nvim",
 
 		--Edit
-		{ "windwp/nvim-autopairs", event = "InsertEnter", config = true },
+		{ "windwp/nvim-autopairs", event = "InsertEnter", config = true, lazy = true },
 		{
 			"Pocco81/auto-save.nvim",
 			config = function()
 				require("auto-save").setup()
 			end,
 		},
-		{ "JoosepAlviste/nvim-ts-context-commentstring" },
 		{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
 		{
 			"lukas-reineke/indent-blankline.nvim",
@@ -169,7 +239,7 @@ require("lazy").setup({
 		},
 		{
 			"sontungexpt/better-diagnostic-virtual-text",
-			event ="LspAttach",
+			event = "LspAttach",
 			config = function(_)
 				require("better-diagnostic-virtual-text").setup()
 			end,

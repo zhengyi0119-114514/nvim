@@ -26,7 +26,6 @@ vim.keymap.set("n", "<leader>bcp", "<CMD>BufferLineCyclePrev<CR>")
 vim.keymap.set("n", "<A-h>", "<CMD>BufferLineCyclePrev<CR>")
 vim.keymap.set("n", "<leader>bd", "<CMD>NvimTreeClose<CR><CMD>bdelete! %<CR>")
 
-vim.keymap.set("n", "<leader>et", "<CMD>NvimTreeToggle<CR>")
 vim.keymap.set("n", "<leader>ca", require("cmp").mapping.abort, { desc = "Abort CMP" })
 vim.keymap.set("n", "<leader>ca", require("cmp").mapping.complete, { desc = "Complete CMP" })
 
@@ -39,4 +38,3 @@ vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help ta
 vim.keymap.set("n", "<leader>mf", "<CMD>Format<CR>", { desc = "Format files" })
 vim.keymap.set("n", "<A-S-f>", "<CMD>Format<CR>")
 vim.keymap.set("i", "<A-S-f>", "<ESC><CMD>Format<CR>a")
-

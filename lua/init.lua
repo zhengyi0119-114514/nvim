@@ -10,13 +10,6 @@ require("plugins.UI-noice")
 require("plugins.TabAndLines-bufferline")
 require("plugins.TabAndLines-lualine")
 
-require("plugins.TreeSetter.nvim-treesetter")
-require("plugins.TreeSetter.nvim-treesetter-context")
-require("plugins.TreeSetter.rainbow-delimiters")
-require("plugins.TreeSetter.nvim-ts-context-commentstring")
-
-require("plugins.LanguageServeProtocol.Snips.Luasnip")
-require("plugins.LanguageServeProtocol.CMP")
 require("plugins.LanguageServeProtocol.inc-rename")
 require("plugins.LanguageServeProtocol.lspkind-nvim")
 require("plugins.LanguageServeProtocol.lspsaga")
