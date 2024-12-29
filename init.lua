@@ -1,0 +1,16 @@
+require("Config.Options")
+
+require("Plugins.Lazy")
+require("Plugins.Editor.AutoPair")
+require("Plugins.Editor.BufferLine")
+require("Plugins.Editor.LuaLine")
+require("Plugins.Editor.Noice")
+require("Plugins.Editor.NvimTree")
+require("Plugins.LSP.Mason")
+require("Plugins.LSP.CMP")
+require("Plugins.LSP.Formatter")
+require("Plugins.LSP.Server.lua_ls")
+require("Plugins.TreeSetter.nvim-treesetter")
+
+require("Config.AppTheme")
+require("Config.KeyMap")
