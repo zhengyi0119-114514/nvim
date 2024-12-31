@@ -10,6 +10,8 @@ require("Plugins.LSP.Mason")
 require("Plugins.LSP.CMP")
 require("Plugins.LSP.Formatter")
 require("Plugins.LSP.Server.lua_ls")
+require("Plugins.LSP.Server.clangd")
+require("Plugins.LSP.Server.rust_analyzer")
 require("Plugins.TreeSetter.nvim-treesetter")
 
 require("Config.AppTheme")
