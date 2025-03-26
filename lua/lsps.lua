@@ -1,8 +1,12 @@
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 require("lspconfig").lua_ls.setup({
 	on_init = function(client)
 		if client.workspace_folders then
 			local path = client.workspace_folders[1].name
-			if vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc") then
+			if
+				path ~= vim.fn.stdpath("config")
+				and (vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc"))
+			then
 				return
 			end
 		end
@@ -30,5 +34,11 @@ require("lspconfig").lua_ls.setup({
 	settings = {
 		Lua = {},
 	},
-	capabilities = require("cmp_nvim_lsp").default_capabilities(),
+	capabilities = capabilities,
+})
+require("lspconfig").clangd.setup({
+	capabilities = capabilities,
+})
+require("lspconfig").cmake.setup({
+	capabilities = capabilities,
 })

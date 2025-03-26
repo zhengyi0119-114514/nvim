@@ -1,0 +1,5 @@
+vim.keymap.set("i", "!exit", "<ESC>", { desc = "exit" })
+vim.keymap.set("n", "<A-h>", "<CMD>BufferLineCyclePrev<CR>")
+vim.keymap.set("n", "<A-l>", "<CMD>BufferLineCycleNext<CR>")
+vim.keymap.set("n", "<LEADER>eo", "<CMD>Neotree<CR>")
+vim.keymap.set("n", "<A-S-f>", "<CMD>Format<CR>")

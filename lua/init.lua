@@ -1,0 +1,5 @@
+require('config.cfg')
+require('config.lazy')
+require("config.keymaps")
+require("config.set_theme")
+require("lsps")
