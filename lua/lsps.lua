@@ -42,3 +42,6 @@ require("lspconfig").clangd.setup({
 require("lspconfig").cmake.setup({
 	capabilities = capabilities,
 })
+require("lspconfig").neocmake.setup({
+    capabilities = capabilities,
+})
