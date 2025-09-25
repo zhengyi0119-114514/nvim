@@ -1,20 +1,17 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		config = function()
-			require("nvim-treesitter.configs").setup({
+		opts = {
+			{
 				-- A list of parser names, or "all" (the listed parsers MUST always be installed)
 				ensure_installed = {
 					"c",
 					"lua",
 					"vim",
-					"vimdoc",
-					"query",
 					"markdown",
 					"markdown_inline",
 					"rust",
 					"cpp",
-					"c_sharp",
 				},
 
 				-- Install parsers synchronously (only applied to `ensure_installed`)
@@ -25,7 +22,7 @@ return {
 				auto_install = true,
 
 				-- List of parsers to ignore installing (or "all")
-				ignore_install = { "javascript" },
+				-- ignore_install = { "javascript" },
 
 				---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
 				-- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
@@ -40,7 +37,7 @@ return {
 					-- disable = { "c", "rust" },
 					-- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
 					disable = function(lang, buf)
-						local max_filesize = 1024 * 1024 -- 1 Mib
+						local max_filesize = 1024 * 1024 * 10 -- 10 Mib
 						local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
 						if ok and stats and stats.size > max_filesize then
 							return true
@@ -53,8 +50,8 @@ return {
 					-- Instead of true it can also be a list of languages
 					additional_vim_regex_highlighting = false,
 				},
-			})
-		end,
+			},
+		},
 	},
 	{
 		"hiphish/rainbow-delimiters.nvim",
@@ -117,5 +114,39 @@ return {
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {},
+	},
+	{
+		"christoomey/vim-tmux-navigator",
+		cmd = {
+			"TmuxNavigateLeft",
+			"TmuxNavigateDown",
+			"TmuxNavigateUp",
+			"TmuxNavigateRight",
+			"TmuxNavigatePrevious",
+			"TmuxNavigatorProcessList",
+		},
+		keys = {
+			{ "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+			{ "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+			{ "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+			{ "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+			{ "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+		},
+	},
+	{
+		"echasnovski/mini.pairs",
+		version = "*",
+		config = function()
+			require("mini.pairs").setup()
+		end,
+	},
+	{
+		"Pocco81/auto-save.nvim",
+		opts = {},
+	},
+	{
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.8",
+		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 }

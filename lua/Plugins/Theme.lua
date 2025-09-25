@@ -4,21 +4,17 @@ return {
 		name = "catppuccin",
 		priority = 1000,
 		opts = {
-			indent_blankline = {
-				enabled = true,
-				scope_color = "", -- catppuccin color (eg. `lavender`) Default: text
-				colored_indent_levels = false,
-			},
-			mason = true,
+			treesitter_context = true,
 			rainbow_delimiters = true,
-			overseer = true,
+			treesitter = true,
+			neotree = true,
+			mason = true,
 			noice = true,
+			cmp = true,
 			notify = true,
+			render_markdown = true,
 			gitgraph = true,
-			neogit = true,
-			neotest = true,
 			diffview = true,
-			lsp_saga = true,
 			native_lsp = {
 				enabled = true,
 				virtual_text = {
