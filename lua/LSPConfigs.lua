@@ -55,13 +55,28 @@ vim.lsp.config("clangd", {
 		"--background-index",
 		"--clang-tidy",
 		"--header-insertion=never",
-		"--completion-style=detailed",
+		"--completion-parse=auto",
+		"--completion-style=bundled",
 		"--function-arg-placeholders",
 		"--fallback-style=microsoft",
+		"--pch-storage=memory",
+		"--function-arg-placeholders=false",
 	},
 	init_options = {
 		usePlaceholders = true,
 		completeUnimported = true,
 		clangdFileStatus = true,
+	},
+})
+vim.lsp.config("ccls", {
+	capabilities = capabilities,
+	init_options = {
+		compilationDatabaseDirectory = "build",
+		cache = {
+			directory = ".ccls-cache",
+		},
+		index = {
+			threads = 32,
+		},
 	},
 })

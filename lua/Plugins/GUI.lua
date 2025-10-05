@@ -2,7 +2,9 @@ return { -- lazy.nvim
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
-		opts = {},
+		opts = {
+			presets = { inc_rename = true },
+		},
 		dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
 	},
 	{
@@ -10,9 +12,10 @@ return { -- lazy.nvim
 		event = "VeryLazy",
 		opts = {
 			left = { "neo-tree" },
-			bottom = { "toggleterm" },
-			right = { "trouble","Outline" },
+			bottom = { "toggleterm", "trouble" },
+			right = { "Outline" },
 			top = {},
+			---@type table<Edgy.Pos, {size:integer | fun():integer, wo?:vim.wo}>
 			options = {
 				left = { size = 40 },
 				bottom = { size = 15 },

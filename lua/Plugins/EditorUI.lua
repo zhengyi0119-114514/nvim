@@ -17,19 +17,26 @@ return {
 			"nvim-tree/nvim-web-devicons",
 		},
 		lazy = false,
+		opts = {
+			sources = { "filesystem", "buffers", "git_status", "document_symbols" },
+			open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
+			filesystem = {
+				follow_current_file = { enabled = true },
+				use_libuv_file_watcher = true,
+			},
+		},
+	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
 		opts = {},
 	},
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
-        opts = {},
-    },
 	{
 		"akinsho/bufferline.nvim",
 		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		opts = {
-			highlights = require("catppuccin.groups.integrations.bufferline").get_theme(),
+			highlights = require("catppuccin.special.bufferline").get_theme(),
 			options = {
 				offsets = {
 					{

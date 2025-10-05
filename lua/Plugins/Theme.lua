@@ -1,5 +1,6 @@
 return {
 	{
+        -- https://github.com/catppuccin/nvim
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,
@@ -15,6 +16,10 @@ return {
 			render_markdown = true,
 			gitgraph = true,
 			diffview = true,
+			dropbar = {
+				enabled = false,
+				color_mode = false, -- enable color for kind's texts, not just kind's icons
+			},
 			native_lsp = {
 				enabled = true,
 				virtual_text = {

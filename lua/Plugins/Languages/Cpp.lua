@@ -36,4 +36,11 @@ return {
 			table.insert(opts.sorting.comparators, 1, require("clangd_extensions.cmp_scores"))
 		end,
 	},
+	{
+		"Civitasv/cmake-tools.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		opts = {},
+	},
 }

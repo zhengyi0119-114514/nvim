@@ -17,6 +17,7 @@ return {
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
 			"onsails/lspkind.nvim",
+			"rafamadriz/friendly-snippets",
 		},
 		config = function()
 			-- Set up nvim-cmp.
@@ -44,6 +45,8 @@ return {
 					{ name = "nvim_lsp" },
 				}, {
 					{ name = "buffer" },
+				}, {
+					{ name = "snippets" },
 				}),
 				formatting = {
 					format = lspkind.cmp_format({
@@ -91,6 +94,12 @@ return {
 		end,
 	},
 	{
+		"rmagatti/goto-preview",
+		dependencies = { "rmagatti/logger.nvim" },
+		event = "BufEnter",
+		config = true, -- necessary as per https://github.com/rmagatti/goto-preview/issues/88
+	},
+	{
 		"rafamadriz/friendly-snippets",
 	},
 	{
@@ -100,6 +109,37 @@ return {
 	},
 	{
 		"hedyhli/outline.nvim",
+		opts = {},
+	},
+	{
+		"mfussenegger/nvim-lint",
+		config = function()
+			require("lint").linters_by_ft = {
+				markdown = { "markdownlint-cli2" },
+			}
+			vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+				callback = function()
+					-- try_lint without arguments runs the linters defined in `linters_by_ft`
+					-- for the current filetype
+					require("lint").try_lint()
+
+					-- You can call `try_lint` with a linter name or a list of names to always
+					-- run specific linters, independent of the `linters_by_ft` configuration
+					-- require("lint").try_lint("cspell")
+				end,
+			})
+		end,
+	},
+	{
+		"aznhe21/actions-preview.nvim",
+		opts = {},
+	},
+	{
+		"smjonas/inc-rename.nvim",
+		opts = {},
+	},
+	{
+		"Bekaboo/dropbar.nvim",
 		opts = {},
 	},
 }

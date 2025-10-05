@@ -116,24 +116,6 @@ return {
 		opts = {},
 	},
 	{
-		"christoomey/vim-tmux-navigator",
-		cmd = {
-			"TmuxNavigateLeft",
-			"TmuxNavigateDown",
-			"TmuxNavigateUp",
-			"TmuxNavigateRight",
-			"TmuxNavigatePrevious",
-			"TmuxNavigatorProcessList",
-		},
-		keys = {
-			{ "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-			{ "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-			{ "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-			{ "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-			{ "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-		},
-	},
-	{
 		"echasnovski/mini.pairs",
 		version = "*",
 		config = function()
@@ -148,5 +130,26 @@ return {
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.8",
 		dependencies = { "nvim-lua/plenary.nvim" },
+	},
+	{
+		"mrjones2014/smart-splits.nvim",
+		version = ">=1.0.0",
+		opts = {},
+	},
+	{
+		"andrewferrier/wrapping.nvim",
+		opts = {},
+	},
+	-- Lua
+	{
+		"olimorris/persisted.nvim",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
+		event = "BufReadPre", -- Ensure the plugin loads only when a buffer has been loaded
+		config = function()
+			require("persisted").setup({})
+			require("telescope").load_extension("persisted")
+		end,
 	},
 }

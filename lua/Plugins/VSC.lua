@@ -1,34 +1,5 @@
 return {
 	{
-		"isakbm/gitgraph.nvim",
-		opts = {
-			git_cmd = "git",
-			symbols = {
-				merge_commit = "M",
-				commit = "*",
-			},
-			format = {
-				timestamp = "%Y/%m/%d %H:%M:%S",
-				fields = { "hash", "timestamp", "author", "branch_name", "tag" },
-			},
-			hooks = {
-				on_select_commit = function(commit)
-					vim.notify("DiffviewOpen " .. commit.hash .. "^!")
-					vim.cmd(":DiffviewOpen " .. commit.hash .. "^!")
-				end,
-				-- Check diff from commit a -> commit b
-				on_select_range_commit = function(from, to)
-					vim.notify("DiffviewOpen " .. from.hash .. "~1.." .. to.hash)
-					vim.cmd(":DiffviewOpen " .. from.hash .. "~1.." .. to.hash)
-				end,
-			},
-		},
-		dependencies = {
-			"rcarriga/nvim-notify",
-			"sindrets/diffview.nvim",
-		},
-	},
-	{
 		"sindrets/diffview.nvim",
 	},
 	{
@@ -36,7 +7,6 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim", -- required
 			"sindrets/diffview.nvim", -- optional - Diff integration
-			-- Only one of these is needed.
 			"nvim-telescope/telescope.nvim", -- optional
 		},
 	},
