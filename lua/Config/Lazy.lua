@@ -28,10 +28,10 @@ require("lazy").setup({
 		{ import = "Plugins.Theme" },
 		{ import = "Plugins.Editor" },
 		{ import = "Plugins.EditorUI" },
-		{ import = "Plugins.GUI" },
 		{ import = "Plugins.VSC" },
 		{ import = "Plugins.PackageManager" },
 		{ import = "Plugins.Format" },
+		{ import = "Plugins.CMP" },
 		{ import = "Plugins.LSP" },
 		{ import = "Plugins.Terminal" },
 		{ import = "Plugins.DAP" },
@@ -39,6 +39,7 @@ require("lazy").setup({
 		{ import = "Plugins.Languages.Cpp" },
 		{ import = "Plugins.Languages.Markdown" },
 		{ import = "Plugins.Languages.Doxygen" },
+		-- { import = "Plugins.Optional.AI" },
 	},
 	checker = { enabled = true }, -- 自动检查插件更新
 })

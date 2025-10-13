@@ -62,6 +62,8 @@ DAP.configurations.c = {
 		runInTerminal = true,
 		console = "integratedTerminal",
 		program = function()
+			local fzf = require("fzf-lua")
+            
 			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 		end,
 	},

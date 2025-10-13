@@ -1,6 +1,6 @@
 return {
 	{
-        -- https://github.com/catppuccin/nvim
+		-- https://github.com/catppuccin/nvim
 		"catppuccin/nvim",
 		name = "catppuccin",
 		priority = 1000,
@@ -11,13 +11,18 @@ return {
 			neotree = true,
 			mason = true,
 			noice = true,
-			cmp = true,
+			lsp_trouble = true,
+			-- cmp = true,
+			blink_cmp = {
+				style = "bordered",
+			},
+			fzf = true,
 			notify = true,
 			render_markdown = true,
 			gitgraph = true,
 			diffview = true,
 			dropbar = {
-				enabled = false,
+				enabled = true,
 				color_mode = false, -- enable color for kind's texts, not just kind's icons
 			},
 			native_lsp = {
@@ -41,5 +46,28 @@ return {
 				},
 			},
 		},
+	},
+	{
+		"goolord/alpha-nvim",
+		config = function()
+			local dashboard = require("alpha.themes.dashboard")
+
+			dashboard.section.header.val = {
+				"",
+				"▗▖  ▗▖▗▄▄▄▖ ▗▄▖     ▗▖  ▗▖▗▄▄▄▖▗▖  ▗▖",
+				"▐▛▚▖▐▌▐▌   ▐▌ ▐▌    ▐▌  ▐▌  █  ▐▛▚▞▜▌",
+				"▐▌ ▝▜▌▐▛▀▀▘▐▌ ▐▌    ▐▌  ▐▌  █  ▐▌  ▐▌",
+				"▐▌  ▐▌▐▙▄▄▖▝▚▄▞▘     ▝▚▞▘ ▗▄█▄▖▐▌  ▐▌",
+				"                                     ",
+			}
+			dashboard.section.buttons.val = {
+				dashboard.button("n", "  > New file", ":enew<CR>"),
+				dashboard.button("f", "󰈞  > Find file", ":FzfLua files<CR>"),
+				dashboard.button("r", "  > Recent", ":FzfLua oldfiles<CR>"),
+				dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h | Neotree |pwd<CR>"),
+				dashboard.button("q", "󰿅  > Quit NVIM", ":qa<CR>"),
+			}
+			require("alpha").setup(dashboard.config)
+		end,
 	},
 }

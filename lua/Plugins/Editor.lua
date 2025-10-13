@@ -11,6 +11,9 @@ return {
 					"markdown",
 					"markdown_inline",
 					"rust",
+					"javascript",
+					"java",
+					"csharp",
 					"cpp",
 				},
 
@@ -38,7 +41,7 @@ return {
 					-- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
 					disable = function(lang, buf)
 						local max_filesize = 1024 * 1024 * 10 -- 10 Mib
-						local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+						local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
 						if ok and stats and stats.size > max_filesize then
 							return true
 						end
@@ -126,30 +129,50 @@ return {
 		"Pocco81/auto-save.nvim",
 		opts = {},
 	},
+	-- {
+	-- 	"mrjones2014/smart-splits.nvim",
+	-- 	version = ">=1.0.0",
+	-- 	opts = {},
+	-- },
 	{
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.8",
-		dependencies = { "nvim-lua/plenary.nvim" },
-	},
-	{
-		"mrjones2014/smart-splits.nvim",
-		version = ">=1.0.0",
-		opts = {},
+		"christoomey/vim-tmux-navigator",
+		cmd = {
+			"TmuxNavigateLeft",
+			"TmuxNavigateDown",
+			"TmuxNavigateUp",
+			"TmuxNavigateRight",
+			"TmuxNavigatePrevious",
+			"TmuxNavigatorProcessList",
+		},
+		keys = {
+			{ "<C-h>", "<cmd><C-U>TmuxNavigateLeft<CR>" },
+			{ "<C-j>", "<cmd><C-U>TmuxNavigateDown<CR>" },
+			{ "<C-k>", "<cmd><C-U>TmuxNavigateUp<CR>" },
+			{ "<C-l>", "<cmd><C-U>TmuxNavigateRight<CR>" },
+			-- { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<CR>" },
+		},
 	},
 	{
 		"andrewferrier/wrapping.nvim",
 		opts = {},
 	},
-	-- Lua
 	{
-		"olimorris/persisted.nvim",
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
+		"ibhagwan/fzf-lua",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {},
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			presets = {
+				inc_rename = true,
+				lsp_doc_border = true,
+				bottom_search = true, -- use a classic bottom cmdline for search
+				command_palette = true, -- position the cmdline and popupmenu together
+				long_message_to_split = true, -- long messages will be sent to a split
+			},
 		},
-		event = "BufReadPre", -- Ensure the plugin loads only when a buffer has been loaded
-		config = function()
-			require("persisted").setup({})
-			require("telescope").load_extension("persisted")
-		end,
+		dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
 	},
 }

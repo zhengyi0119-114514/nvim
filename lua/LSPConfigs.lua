@@ -1,6 +1,4 @@
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
 vim.lsp.config("lua_ls", {
-	capabilities = capabilities,
 	on_init = function(client)
 		if client.workspace_folders then
 			local path = client.workspace_folders[1].name
@@ -49,7 +47,6 @@ vim.lsp.config("lua_ls", {
 	},
 })
 vim.lsp.config("clangd", {
-	capabilities = capabilities,
 	cmd = {
 		"clangd",
 		"--background-index",
@@ -69,7 +66,6 @@ vim.lsp.config("clangd", {
 	},
 })
 vim.lsp.config("ccls", {
-	capabilities = capabilities,
 	init_options = {
 		compilationDatabaseDirectory = "build",
 		cache = {
@@ -80,3 +76,4 @@ vim.lsp.config("ccls", {
 		},
 	},
 })
+

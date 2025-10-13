@@ -56,6 +56,15 @@ return {
 					return string.format("%s.%s", opts.lower(opts.id), opts.lower(opts.ordinal))
 				end,
 			},
+			diagnostics_indicator = function(count, level, diagnostics_dict, context)
+				local s = " "
+				for e, n in pairs(diagnostics_dict) do
+					local sym = e == "error" and " " or (e == "warning" and " " or " ")
+					s = s .. n .. sym
+				end
+				return s
+			end,
+			separator_style = "thick",
 		},
 	},
 	{

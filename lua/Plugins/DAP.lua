@@ -4,15 +4,12 @@ return {
 		dependencies = {
 			"jbyuki/one-small-step-for-vimkind",
 		},
-	},
-	{
-		"nvim-telescope/telescope-dap.nvim",
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-			"mfussenegger/nvim-dap",
-		},
 		config = function()
-			require("telescope").load_extension("dap")
+			local sign = vim.fn.sign_define
+
+			sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
+			sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
+			sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
 		end,
 	},
 	-- {
@@ -43,8 +40,8 @@ return {
 		---@module 'dap-view'
 		---@type dapview.Config
 		opts = {
-            auto_toggle = true,
-        },
+			auto_toggle = true,
+		},
 	},
 	-- virtual text for the debugger
 	{
@@ -70,7 +67,7 @@ return {
 			-- You'll need to check that you have the required things installed
 			-- online, please don't ask me how to install them :)
 			ensure_installed = {
-				"codelldb"
+				"codelldb",
 			},
 		},
 		-- mason-nvim-dap is loaded when nvim-dap loads

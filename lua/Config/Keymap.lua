@@ -14,27 +14,11 @@ vim.keymap.set("n", "<LEADER>ef", require("conform").format, { desc = "Format" }
 vim.keymap.set("n", "<LEADER>ea", "<CMD>ASToggle<CR>", { desc = "Toggle Auto Save" })
 vim.keymap.set("n", "<LEADER>esh", "<CMD>sp<CR>")
 vim.keymap.set("n", "<LEADER>esv", "<CMD>vsp<CR>")
--- recommended mappings
--- resizing splits
--- these keymaps will also accept a range,
--- for example `10<A-h>` will `resize_left` by `(10 * config.default_amount)`
-vim.keymap.set("n", "<A-LEFT>", require("smart-splits").resize_left)
-vim.keymap.set("n", "<A-DOWN>", require("smart-splits").resize_down)
-vim.keymap.set("n", "<A-UP>", require("smart-splits").resize_up)
-vim.keymap.set("n", "<A-RIGHT>", require("smart-splits").resize_right)
--- moving between splits
-vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
-vim.keymap.set("n", "<C-LEFT>", require("smart-splits").move_cursor_left)
-vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
-vim.keymap.set("n", "<C-DOWN>", require("smart-splits").move_cursor_down)
-vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
-vim.keymap.set("n", "<C-UP>", require("smart-splits").move_cursor_up)
-vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
-vim.keymap.set("n", "<C-RIGHT>", require("smart-splits").move_cursor_right)
-vim.keymap.set("n", "<C-\\>", require("smart-splits").move_cursor_previous)
 -- Buffer
 vim.keymap.set("n", "<A-h>", "<CMD>BufferLineCyclePrev<CR>")
 vim.keymap.set("n", "<A-l>", "<CMD>BufferLineCycleNext<CR>")
+-- Tab
+vim.keymap.set("n", "<C-]>", "<CMD>tabNext<CR>")
 -- vim.keymap.set("n","<LEADER>bd","<CMD>w<CR><CMD>bdelete %<CR>")
 vim.keymap.set(
 	"n",
@@ -46,11 +30,9 @@ vim.keymap.set(
 WhickKey.add({
 	{ "<LEADER>f", desc = "Find" },
 })
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<LEADER>ff", builtin.find_files, { desc = "Telescope find files" })
-vim.keymap.set("n", "<LEADER>fg", builtin.live_grep, { desc = "Telescope live grep" })
-vim.keymap.set("n", "<LEADER>fb", builtin.buffers, { desc = "Telescope buffers" })
-vim.keymap.set("n", "<LEADER>fh", builtin.help_tags, { desc = "Telescope help tags" })
+vim.keymap.set("n", "<LEADER>ff", require("fzf-lua").files, { desc = "Find File" })
+vim.keymap.set("n", "<LEADER>fb", require("fzf-lua").buffers, { desc = "Find Buffer" })
+
 -- LSP
 WhickKey.add({
 	{ "<LEADER>l", desc = "LSP" },
@@ -100,8 +82,8 @@ vim.keymap.set("n", "<LEADER>lpc", GotoPreview.close_all_win, { desc = "Close Pr
 
 vim.keymap.set({ "n", "v" }, "<LEADER>lgd", vim.lsp.buf.definition, { desc = "Goto Definition" })
 vim.keymap.set({ "n", "v" }, "<LEADER>lgD", vim.lsp.buf.type_definition, { desc = "Goto Type Definition" })
-vim.keymap.set({ "n", "v" }, "<LEADER>lpi", vim.lsp.buf.implementation, { desc = "Goto Implementation" })
-vim.keymap.set({ "n", "v" }, "<LEADER>lpr", vim.lsp.buf.references, { desc = "Goto References" })
+vim.keymap.set({ "n", "v" }, "<LEADER>lgi", vim.lsp.buf.implementation, { desc = "Goto Implementation" })
+vim.keymap.set({ "n", "v" }, "<LEADER>lgr", vim.lsp.buf.references, { desc = "Goto References" })
 -- VSC
 -- Debug
 WhickKey.add({
@@ -117,3 +99,4 @@ vim.keymap.set("n", "<F11>", require("dap").step_into, { desc = "Step into" })
 vim.keymap.set("n", "<LEADER>dsO", require("dap").step_over, { desc = "Step over" })
 vim.keymap.set("n", "<F10>", require("dap").step_over, { desc = "Step over" })
 vim.keymap.set("n", "<LEADER>dso", require("dap").step_out, { desc = "Step out" })
+vim.keymap.set("n", "<S-F10>", require("dap").step_out, { desc = "Step out" })

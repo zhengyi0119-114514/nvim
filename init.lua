@@ -5,3 +5,4 @@ require("LSPConfigs")
 require("DAPConfigs")
 vim.cmd.colorscheme("catppuccin-latte")
 vim.cmd.colorscheme("catppuccin-latte")
+
