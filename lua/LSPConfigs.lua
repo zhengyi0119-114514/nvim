@@ -76,4 +76,4 @@ vim.lsp.config("ccls", {
 		},
 	},
 })
-
+-- vim.lsp.enable('omnisharp')

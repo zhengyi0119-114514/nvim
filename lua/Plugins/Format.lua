@@ -7,8 +7,10 @@ return {
 				formatters_by_ft = {
 					lua = { "stylua" },
 					rust = { "rustfmt", lsp_format = "fallback" },
-					cpp = { "clang-format" },
-					c = { "clang-format" },
+					cpp = { "clang_format" },
+					c = { "clang_format" },
+					-- cs = { "clang_format" },
+					cs = { "csharpier" },
 				},
 			})
 			require("conform").formatters.clang_format = {

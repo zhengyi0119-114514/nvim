@@ -12,6 +12,7 @@ return {
 			mason = true,
 			noice = true,
 			lsp_trouble = true,
+			grug_far = false,
 			-- cmp = true,
 			blink_cmp = {
 				style = "bordered",
@@ -64,6 +65,8 @@ return {
 				dashboard.button("n", "  > New file", ":enew<CR>"),
 				dashboard.button("f", "󰈞  > Find file", ":FzfLua files<CR>"),
 				dashboard.button("r", "  > Recent", ":FzfLua oldfiles<CR>"),
+				dashboard.button("p", "󰏓  > Mason Package Manager", ":Mason<CR>"),
+				dashboard.button("l", "  > Plugins Manager", ":Lazy<CR>"),
 				dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h | Neotree |pwd<CR>"),
 				dashboard.button("q", "󰿅  > Quit NVIM", ":qa<CR>"),
 			}

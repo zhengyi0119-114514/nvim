@@ -37,6 +37,7 @@ return {
 	},
 	{
 		"saghen/blink.cmp",
+		optional = true,
 		---@type fun(param:table,param:blink.cmp.Config)
 		opts = function(_, Options)
 			table.insert(Options.sources.default, "codecompanion")

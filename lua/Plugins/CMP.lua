@@ -31,8 +31,8 @@ return {
 				["<TAB>"] = { "accept", "snippet_forward", "fallback" },
 				["<S-TAB>"] = { "snippet_backward", "fallback" },
 				["<ESC>"] = { "fallback" },
-				["<A-[>"] = { "scroll_documentation_down", "fallback" },
-				["<A-]>"] = { "scroll_documentation_up", "fallback" },
+				["<A-u>"] = { "scroll_documentation_down", "fallback" },
+				["<A-i>"] = { "scroll_documentation_up", "fallback" },
 			},
 			appearance = {
 				-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -55,7 +55,7 @@ return {
 				menu = {
 					enabled = true,
 					min_width = 20,
-					max_height = 13,
+					max_height = 20,
 					border = "rounded",
 					scrollbar = true,
 				},

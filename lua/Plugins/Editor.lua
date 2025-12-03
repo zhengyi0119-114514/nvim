@@ -15,6 +15,9 @@ return {
 					"java",
 					"csharp",
 					"cpp",
+                    "html",
+                    "latex",
+                    "yaml",
 				},
 
 				-- Install parsers synchronously (only applied to `ensure_installed`)
@@ -91,9 +94,9 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter-context",
 		opts = {
-			enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+			enable = true,   -- Enable this plugin (Can be enabled/disabled later via commands)
 			multiwindow = false, -- Enable multiwindow support.
-			max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+			max_lines = 0,   -- How many lines the window should span. Values <= 0 mean no limit.
 			min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
 			line_numbers = true,
 			multiline_threshold = 20, -- Maximum number of lines to show for a single context
@@ -153,10 +156,6 @@ return {
 		},
 	},
 	{
-		"andrewferrier/wrapping.nvim",
-		opts = {},
-	},
-	{
 		"ibhagwan/fzf-lua",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {},
@@ -173,6 +172,26 @@ return {
 				long_message_to_split = true, -- long messages will be sent to a split
 			},
 		},
-		dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
 	},
+	-- {
+	-- 	"folke/edgy.nvim",
+	-- 	event = "VeryLazy",
+	-- 	opts = {
+	-- 		left = { "neo-tree" },
+	-- 		bottom = { "toggleterm", "trouble" },
+	-- 		right = { "Outline" },
+	-- 		top = {},
+	-- 		---@type table<Edgy.Pos, {size:integer | fun():integer, wo?:vim.wo}>
+	-- 		options = {
+	-- 			left = { size = 40 },
+	-- 			bottom = { size = 15 },
+	-- 			right = { size = 40 },
+	-- 			top = { size = 10 },
+	-- 		},
+	-- 	},
+	-- },
 }

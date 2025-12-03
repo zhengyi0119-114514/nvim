@@ -45,8 +45,16 @@ return {
 		end,
 	},
 	{
-		"aznhe21/actions-preview.nvim",
+		"rachartier/tiny-code-action.nvim",
+		dependencies = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "ibhagwan/fzf-lua" },
+		},
+		event = "LspAttach",
 		opts = {},
+        keys = {
+
+        }
 	},
 	{
 		"smjonas/inc-rename.nvim",

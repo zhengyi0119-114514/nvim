@@ -10,6 +10,11 @@ DAP.adapters.codelldb = {
 	command = "codelldb",
 	name = "codelldb",
 }
+DAP.adapters.netcoredbg = {
+	type = "executable",
+	command = "netcoredbg",
+	name = "netcoredbg",
+}
 DAP.configurations.lua = {
 	{
 		type = "nlua",
@@ -62,8 +67,6 @@ DAP.configurations.c = {
 		runInTerminal = true,
 		console = "integratedTerminal",
 		program = function()
-			local fzf = require("fzf-lua")
-            
 			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 		end,
 	},
@@ -78,7 +81,35 @@ DAP.configurations.c = {
 }
 DAP.configurations.rust = DAP.configurations.c
 DAP.configurations.cpp = DAP.configurations.c
-
+-- DAP.configurations.cs = {
+-- 	{
+-- 		name = "netcoredbg-run",
+-- 		request = "launch",
+-- 		type = "netcoredbg",
+-- 		stopOnEntry = false,
+-- 		runInTerminal = true,
+-- 		console = "integratedTerminal",
+-- 	},
+-- 	{
+-- 		name = "netcoredbg-attach",
+-- 		request = "attach",
+-- 		type = "netcoredbg",
+-- 		stopOnEntry = false,
+-- 		runInTerminal = true,
+-- 		console = "integratedTerminal",
+-- 	},
+-- 	{
+-- 		name = "netcoredbg-run-program",
+-- 		request = "launch",
+-- 		type = "netcoredbg",
+-- 		stopOnEntry = false,
+-- 		runInTerminal = true,
+-- 		console = "integratedTerminal",
+-- 		program = function()
+-- 			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+-- 		end,
+-- 	},
+-- }
 DAP.adapters.nlua = function(callback, config)
 	callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
 end

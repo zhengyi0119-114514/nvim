@@ -21,6 +21,10 @@ return {
 			sources = { "filesystem", "buffers", "git_status", "document_symbols" },
 			open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
 			filesystem = {
+				window = {
+					mappings = {},
+				},
+				commands = {},
 				follow_current_file = { enabled = true },
 				use_libuv_file_watcher = true,
 			},
@@ -35,6 +39,7 @@ return {
 		"akinsho/bufferline.nvim",
 		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
+        lazy = false,
 		opts = {
 			highlights = require("catppuccin.special.bufferline").get_theme(),
 			options = {
@@ -51,20 +56,27 @@ return {
 						text_align = "center",
 						separator = true,
 					},
+					{
+						filetype = "grug-far",
+						text = "Find and replace",
+						text_align = "center",
+						separator = true,
+					},
 				},
 				numbers = function(opts)
 					return string.format("%s.%s", opts.lower(opts.id), opts.lower(opts.ordinal))
 				end,
 			},
-			diagnostics_indicator = function(count, level, diagnostics_dict, context)
-				local s = " "
-				for e, n in pairs(diagnostics_dict) do
-					local sym = e == "error" and " " or (e == "warning" and " " or " ")
-					s = s .. n .. sym
-				end
-				return s
-			end,
 			separator_style = "thick",
+		},
+		keys = {
+			{ "<LEADER>fr", "<CMD>GrugFar<CR>", desc = "Find and replace" },
+		},
+	},
+	{
+		"MagicDuck/grug-far.nvim",
+		opts = {
+			headerMaxWidth = 80,
 		},
 	},
 	{

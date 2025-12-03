@@ -7,6 +7,7 @@ WhickKey.add({
 	{ "<LEADER>es", desc = "Split" },
 })
 vim.keymap.set("i", ";'", "<ESC>")
+vim.keymap.set("i", "；’", "<ESC>")
 vim.keymap.set("n", "<LEADER>et", "<CMD>Neotree toggle<CR>", { desc = "File Explorer" })
 vim.keymap.set("n", "<C-A-e>", "<CMD>Neotree toggle<CR>", { desc = "File Explorer" })
 -- vim.keymap.set("n", "<LEADER>ef", "<CMD>Format<CR>", { desc = "Format" })
@@ -17,15 +18,14 @@ vim.keymap.set("n", "<LEADER>esv", "<CMD>vsp<CR>")
 -- Buffer
 vim.keymap.set("n", "<A-h>", "<CMD>BufferLineCyclePrev<CR>")
 vim.keymap.set("n", "<A-l>", "<CMD>BufferLineCycleNext<CR>")
+vim.keymap.set("n", "<A-H>", "<CMD>BufferLineMovePrev<CR>")
+vim.keymap.set("n", "<A-L>", "<CMD>BufferLineMoveNext<CR>")
+vim.keymap.set("n", "<LEADER>bd", "<CMD>bdelete %<CR>", { desc = "Delete Current Buffer" })
+vim.keymap.set("n", "<LEADER>bs", "<CMD>BufferLineCloseLeft<CR>", { desc = "Close Left Buffer" })
+vim.keymap.set("n", "<LEADER>bf", "<CMD>BufferLineCloseRight<CR>", { desc = "Close Right Buffer" })
 -- Tab
-vim.keymap.set("n", "<C-]>", "<CMD>tabNext<CR>")
+vim.keymap.set("n", "<A-]>", "<CMD>tabNext<CR>")
 -- vim.keymap.set("n","<LEADER>bd","<CMD>w<CR><CMD>bdelete %<CR>")
-vim.keymap.set(
-	"n",
-	"<LEADER>bd",
-	"<CMD>Neotree toggle<CR><CMD>w<CR><CMD>bdelete %<CR><CMD>Neotree toggle<CR>",
-	{ desc = "Delete Current Buffer" }
-)
 -- Find
 WhickKey.add({
 	{ "<LEADER>f", desc = "Find" },
@@ -60,7 +60,7 @@ vim.keymap.set("n", "<LEADER>ls", "<CMD>Outline<CR>", { desc = "Toggle Outline" 
 vim.keymap.set("n", "<LEADER>lr", ":IncRename ", { desc = "Rename" })
 vim.keymap.set("n", "<LEADER>lf", vim.lsp.buf.format, { desc = "Format with LSP" })
 vim.keymap.set("n", "<F2>", ":IncRename ", { desc = "Rename" })
-vim.keymap.set({ "v", "n" }, "<LEADER>la", require("actions-preview").code_actions, { desc = "Cade Action" })
+vim.keymap.set({ "n", "v" },"<LEADER>la", require("tiny-code-action").code_action, { desc = "Code atcion" })
 
 local GotoPreview = require("goto-preview")
 
