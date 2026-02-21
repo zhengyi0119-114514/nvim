@@ -14,6 +14,7 @@ return {
 			lsp_trouble = true,
 			grug_far = false,
 			-- cmp = true,
+            blink_indent = true,
 			blink_cmp = {
 				style = "bordered",
 			},

@@ -76,4 +76,42 @@ vim.lsp.config("ccls", {
 		},
 	},
 })
+vim.lsp.config("rust_analyzer", {
+	settings = {
+		["rust-analyzer"] = {
+			diagnostics = {
+				enable = false,
+			},
+			lens = {
+				debug = {
+					enable = true,
+				},
+				enable = true,
+				implementations = {
+					enable = true,
+				},
+				references = {
+					adt = {
+						enable = true,
+					},
+					enumVariant = {
+						enable = true,
+					},
+					method = {
+						enable = true,
+					},
+					trait = {
+						enable = true,
+					},
+				},
+				run = {
+					enable = true,
+				},
+				updateTest = {
+					enable = true,
+				},
+			},
+		},
+	},
+})
 -- vim.lsp.enable('omnisharp')

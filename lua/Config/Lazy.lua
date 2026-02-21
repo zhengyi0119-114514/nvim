@@ -38,8 +38,7 @@ require("lazy").setup({
 		{ import = "Plugins.Languages.Lua" },
 		{ import = "Plugins.Languages.Cpp" },
 		{ import = "Plugins.Languages.Markdown" },
-		-- { import = "Plugins.Languages.Doxygen" },
-		{ import = "Plugins.Languages.CSharp" },
+		-- { import = "Plugins.Languages.CSharp" },
 		-- { import = "Plugins.Optional.AI" },
 	},
 	checker = { enabled = true }, -- 自动检查插件更新

@@ -9,14 +9,16 @@ return {
 					rust = { "rustfmt", lsp_format = "fallback" },
 					cpp = { "clang_format" },
 					c = { "clang_format" },
-					-- cs = { "clang_format" },
 					cs = { "csharpier" },
 				},
 			})
 			require("conform").formatters.clang_format = {
 				command = "clang-format",
-				args = { "-assume-filename", "$FILENAME", "--sytle=Microsoft" },
+				args = { "-assume-filename", "$FILENAME", "--style=Microsoft" },
 			}
 		end,
+		keys = {
+			{ "<LEADER>ef", "<CMD>lua require('conform').format()<CR>", desc = "Format" },
+		},
 	},
 }

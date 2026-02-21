@@ -12,6 +12,33 @@ return {
 		dependencies = { "rmagatti/logger.nvim" },
 		event = "BufEnter",
 		config = true, -- necessary as per https://github.com/rmagatti/goto-preview/issues/88
+		keys = {
+			{
+				"<LEADER>lpD",
+				"<CMD>lua require('goto-preview').goto_preview_type_definition()<CR>",
+				desc = "Preview Type Definition",
+			},
+			{
+				"<LEADER>lpi",
+				"<CMD>lua require('goto-preview').goto_preview_implementation()<CR>",
+				desc = "Preview Implementation",
+			},
+			{
+				"<LEADER>lpd",
+				"<CMD>lua require('goto-preview').goto_preview_definition()<CR>",
+				desc = "Preview Definition",
+			},
+			{
+				"<LEADER>lpr",
+				"<CMD>lua require('goto-preview').goto_preview_references()<CR>",
+				{ desc = "Preview References" },
+			},
+			{
+				"<LEADER>lpc",
+				"<CMD>lua require('goto-preview').close_all_win()<CR>",
+				desc = "Close Preview Window",
+			},
+		},
 	},
 	{
 		"rafamadriz/friendly-snippets",
@@ -20,10 +47,32 @@ return {
 		"folke/trouble.nvim",
 		opts = {}, -- for default options, refer to the configuration section for custom setup.
 		cmd = "Trouble",
+		keys = {
+			{
+				"<LEADER>lt",
+				desc = "trouble",
+			},
+			{
+				"<LEADER>ltr",
+				"<CMD>Trouble lsp toggle focus=false win.position=right<CR>",
+				desc = "LSP Definitions / references / ... (Trouble)",
+			},
+			{
+				"<LEADER>ltD",
+				"<CMD>Trouble diagnostics toggle filter.buf=0<<CR>",
+				desc = "Buffer Diagnostics (Trouble)",
+			},
+			{ "<LEADER>lts", "<CMD>Trouble symbols toggle focus=false<CR>", desc = "Symbols (Trouble)" },
+			{ "<LEADER>ltl", "<CMD>Trouble loclist toggle<CR>", desc = "Location List (Trouble)" },
+			{ "<LEADER>ltd", "<CMD>Trouble diagnostics toggle<CR>", desc = "Diagnostics 诊断 (Trouble)" },
+			{ "<LEADER>ltq", "<CMD>Trouble qflist toggle<CR>", desc = "Quickfix List (Trouble)" },
+		},
 	},
-	{
-		"hedyhli/outline.nvim",
+	{ "hedyhli/outline.nvim",
 		opts = {},
+		keys = {
+			{ "<LEADER>ls", "<CMD>Outline<CR>", desc = "Toggle Outline" },
+		},
 	},
 	{
 		"mfussenegger/nvim-lint",
@@ -52,13 +101,17 @@ return {
 		},
 		event = "LspAttach",
 		opts = {},
-        keys = {
-
-        }
+		keys = {
+			{ "<LEADER>la", "<CMD>lua require('tiny-code-action').code_action()<CR>", desc = "Code atcion" },
+		},
 	},
 	{
 		"smjonas/inc-rename.nvim",
 		opts = {},
+		keys = {
+			{ "<F2>", ":IncRename ", desc = "Rename" },
+			{ "<LEADER>lr", ":IncRename ", desc = "Rename" },
+		},
 	},
 	{
 		"Bekaboo/dropbar.nvim",

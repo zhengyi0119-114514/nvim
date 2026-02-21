@@ -5,7 +5,7 @@ return {
 			"nvim-lua/plenary.nvim",
 			"ibhagwan/fzf-lua",
 		},
-        build = "dotnet tool install -g EasyDotnet",
+		build = "dotnet tool install -g EasyDotnet",
 		opts = {
 			lsp = {
 				enable = true,
